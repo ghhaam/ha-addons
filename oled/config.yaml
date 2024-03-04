@@ -26,7 +26,7 @@ map:
 options:
   message: "Hello world!"
   message_font_size: 40
-  message_unit: "ppm"
+  #message_unit: "ppm"
   message_unit_font_size: 20
   #mqtt_message_lisener: "oled/message"
   display_interface_serial: i2c
@@ -37,7 +37,7 @@ options:
 schema: 
   message: str
   message_font_size: int
-  message_unit: str
+  #message_unit: str
   message_unit_font_size: int
   #mqtt_message_lisener: str
   display_interface_serial: list(i2c)
