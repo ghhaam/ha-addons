@@ -7,7 +7,7 @@ configuration:
     description: Size of the value.
   message_unit:
     name: Message unit
-    description: Show this when starting.
+    description: Fix Unit of the message.
   message_unit_font_size:
     name: Unit font size
     description: Size of the unit.
