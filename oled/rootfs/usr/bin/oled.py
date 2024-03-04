@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--mqtt_host")
 parser.add_argument("--mqtt_user")
 parser.add_argument("--mqtt_password")
+parser.add_argument("--mqtt_message_lisener")
 parser.add_argument("--message")
 parser.add_argument("--display_type")
 parser.add_argument("--display_rotate", type=int)
@@ -37,8 +38,8 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    # client.subscribe(str(args.mqtt_message_lisener))
-    client.subscribe("oled/message")
+    client.subscribe(str(args.mqtt_message_lisener))
+    #client.subscribe("oled/message")
 
 
 # The callback for when a PUBLISH message is received from the server.
