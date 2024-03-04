@@ -2,6 +2,18 @@ configuration:
   message:
     name: Message
     description: Show this when starting.
+  message_font_size:
+    name: Message font size
+    description: Size of the value.
+  message_unit:
+    name: Message unit
+    description: Show this when starting.
+  message_unit_font_size:
+    name: Unit font size
+    description: Size of the unit.
+  mqtt_message_lisener:
+    name: MQTT message lisener
+    description: Lisener for MQTT message to display.
   display_interface_serial:
     name: Serial interface
     description: Which interface does the device use?
