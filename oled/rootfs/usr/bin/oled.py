@@ -15,6 +15,9 @@ parser.add_argument("--mqtt_user")
 parser.add_argument("--mqtt_password")
 parser.add_argument("--mqtt_message_lisener")
 parser.add_argument("--message")
+parser.add_argument("--message_unit")
+parser.add_argument("--message_font_size", type=int)
+parser.add_argument("--message_unit_font_size", type=int)
 parser.add_argument("--display_type")
 parser.add_argument("--display_rotate", type=int)
 parser.add_argument("--display_interface_serial")
@@ -49,8 +52,8 @@ def on_message(client, userdata, msg):
         #draw.rectangle(device.bounding_box, outline="white", fill="black")
         device.clear()
         draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
-        #draw.text((1, 43), str(args.message_unit, encoding="UTF-8"), font=fnt_unit, fill="white")
-        draw.text((1, 43), "ppm", font=fnt_unit, fill="white")
+        draw.text((1, 43), str(args.message_unit, encoding="UTF-8"), font=fnt_unit, fill="white")
+        #draw.text((1, 43), "ppm", font=fnt_unit, fill="white")
 
 
 
@@ -68,10 +71,10 @@ interface = globals()[DISPLAY_INTERFACE_SERIAL](port=DISPLAY_INTERFACE_SERIAL_PO
 device = globals()[DISPLAY_TYPE](interface, rotate=DISPLAY_ROTATE)
 device.contrast(50)
 
-#fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=int(args.message_font_size), encoding="unic")
-fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 40, encoding="unic")
-#fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=int(args.message_unit_font_size), encoding="unic")
-fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 20, encoding="unic")
+fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_font_size, encoding="unic")
+#fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 40, encoding="unic")
+fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_unit_font_size, encoding="unic")
+#fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 20, encoding="unic")
 
 # Draw some text
 with canvas(device) as draw:
