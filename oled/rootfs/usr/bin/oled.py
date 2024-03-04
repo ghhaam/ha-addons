@@ -30,6 +30,7 @@ MQTT_HOST: Final = args.mqtt_host
 MQTT_USER: Final = args.mqtt_user
 MQTT_PASSWORD: Final = args.mqtt_password
 #MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
+MESSAGE_UNIT: Final = args.message_unit
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
@@ -53,7 +54,7 @@ def on_message(client, userdata, msg):
         #draw.rectangle(device.bounding_box, outline="white", fill="black")
         device.clear()
         draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
-        draw.text((1, 43), str(args.message_unit, encoding="UTF-8"), font=fnt_unit, fill="white")
+        draw.text((1, 43), MESSAGE_UNIT, font=fnt_unit, fill="white")
         #draw.text((1, 43), "ppm", font=fnt_unit, fill="white")
 
 
