@@ -28,7 +28,7 @@ options:
   message_font_size: 40
   message_unit: "ppm"
   message_unit_font_size: 20
-  mqtt_message_lisener: "oled/message"
+  #mqtt_message_lisener: "oled/message"
   display_interface_serial: i2c
   display_interface_port: 1
   display_interface_address: 60
