@@ -37,7 +37,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    #client.subscribe(str(args.mqtt_message_lisener))
+    # client.subscribe(str(args.mqtt_message_lisener))
     client.subscribe("oled/message")
 
 
