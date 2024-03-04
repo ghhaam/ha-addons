@@ -6,10 +6,13 @@
 
 
 ## Get the mqqt options from the services API.
-mqtt_host=$(bashio::services mqtt "host")
-mqtt_user=$(bashio::services mqtt "username")
-mqtt_password=$(bashio::services mqtt "password")
-
+if ! bashio::services.available "mqtt"; then
+    bashio::log.error "No internal MQTT service found"
+else
+    mqtt_host=$(bashio::services mqtt "host")
+    mqtt_user=$(bashio::services mqtt "username")
+    mqtt_password=$(bashio::services mqtt "password")
+fi
 ## Get the user config options.
 message=$(bashio::config 'message')
 display_type=$(bashio::config 'display_type')
