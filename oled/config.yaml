@@ -39,7 +39,7 @@ schema:
   message_font_size: int
   message_unit: str
   message_unit_font_size: int
-  mqtt_message_lisener: str
+  #mqtt_message_lisener: str
   display_interface_serial: list(i2c)
   display_interface_port: int
   display_interface_address: int
