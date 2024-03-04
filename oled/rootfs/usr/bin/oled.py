@@ -29,6 +29,7 @@ args = parser.parse_args()
 MQTT_HOST: Final = args.mqtt_host
 MQTT_USER: Final = args.mqtt_user
 MQTT_PASSWORD: Final = args.mqtt_password
+MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
@@ -41,7 +42,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe(str(args.mqtt_message_lisener))
+    client.subscribe(MQTT_MESSAGE_LISENER)
     #client.subscribe("oled/message")
 
 
