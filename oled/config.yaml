@@ -37,8 +37,4 @@ schema:
   display_interface_address: int
   display_type: list(sh1106|ssd1306)
   display_rotate: list(0|1|2|3)
-logger:
-  default: info
-  logs:
-    homeassistant.components.oled-addon: info
 #image: "ghcr.io/home-assistant/{arch}-addon-example"
