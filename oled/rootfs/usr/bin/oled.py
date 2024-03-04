@@ -48,7 +48,7 @@ def on_message(client, userdata, msg):
         draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
 
 
-print("Connecting to "+str(MQTT_HOST)+" with user "+str(MQTT_USER))
+# print("Connecting to "+str(MQTT_HOST)+" with user "+str(MQTT_USER))
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
 client.on_connect = on_connect
 client.on_message = on_message
