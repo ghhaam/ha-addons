@@ -35,6 +35,6 @@ schema:
   display_interface_serial: list(i2c)
   display_interface_port: int
   display_interface_address: int
-  display_type: list(sh1106)
+  display_type: list(sh1106|ssd1306)
   display_rotate: list(0|1|2|3)
 #image: "ghcr.io/home-assistant/{arch}-addon-example"
