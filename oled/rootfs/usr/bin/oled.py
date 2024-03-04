@@ -55,7 +55,7 @@ def on_message(client, userdata, msg):
         device.clear()
         draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
         #draw.text((1, 43), MESSAGE_UNIT, font=fnt_unit, fill="white")
-        draw.text((1, 43), "ppm", font=fnt_unit, fill="white")
+        draw.text((1, 41), "ppm", font=fnt_unit, fill="white")
 
 
 
@@ -76,7 +76,7 @@ device.contrast(50)
 #fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_font_size, encoding="unic")
 fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 40, encoding="unic")
 #fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_unit_font_size, encoding="unic")
-fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 20, encoding="unic")
+fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 18, encoding="unic")
 
 # Draw some text
 with canvas(device) as draw:
