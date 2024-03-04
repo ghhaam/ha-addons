@@ -25,6 +25,9 @@ map:
   - config:rw
 options:
   message: "Hello world!"
+  message_font_size: 40
+  message_unit: "ppm"
+  message_unit_font_size: 20
   display_interface_serial: i2c
   display_interface_port: 1
   display_interface_address: 60
@@ -32,6 +35,9 @@ options:
   display_rotate: "2"
 schema: 
   message: str
+  message_font_size: int
+  message_unit: str
+  message_unit_font_size: int
   display_interface_serial: list(i2c)
   display_interface_port: int
   display_interface_address: int
