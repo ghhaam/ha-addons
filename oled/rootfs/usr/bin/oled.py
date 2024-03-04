@@ -37,7 +37,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe("oled/message")
+    client.subscribe(args.mqtt_message_lisener)
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -46,6 +46,7 @@ def on_message(client, userdata, msg):
         #draw.rectangle(device.bounding_box, outline="white", fill="black")
         device.clear()
         draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
+        draw.text((1, 43), str(args.message_unit, encoding="UTF-8"), font=fnt_unit, fill="white")
 
 
 
@@ -63,7 +64,8 @@ interface = globals()[DISPLAY_INTERFACE_SERIAL](port=DISPLAY_INTERFACE_SERIAL_PO
 device = globals()[DISPLAY_TYPE](interface, rotate=DISPLAY_ROTATE)
 device.contrast(50)
 
-fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 40)
+fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", args.message_font_size)
+fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", args.message_unit_font_size)
 
 # Draw some text
 with canvas(device) as draw:
