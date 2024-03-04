@@ -69,7 +69,7 @@ fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", int(args.message_unit_f
 
 # Draw some text
 with canvas(device) as draw:
-    draw.rectangle(device.bounding_box, outline="white", fill="black")
+    # draw.rectangle(device.bounding_box, outline="white", fill="black")
     draw.text((1, 1), args.message, font=fnt, fill="white")
 
 client.loop_forever()
