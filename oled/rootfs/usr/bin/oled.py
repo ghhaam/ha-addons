@@ -48,7 +48,8 @@ def on_message(client, userdata, msg):
         #draw.rectangle(device.bounding_box, outline="white", fill="black")
         device.clear()
         draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
-        draw.text((1, 43), str(args.message_unit, encoding="UTF-8"), font=fnt_unit, fill="white")
+        #draw.text((1, 43), str(args.message_unit, encoding="UTF-8"), font=fnt_unit, fill="white")
+        draw.text((1, 43), "ppm", font=fnt_unit, fill="white")
 
 
 
