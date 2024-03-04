@@ -27,7 +27,7 @@ options:
   message: "Hello world!"
   #message_font_size: 40
   #message_unit: "ppm"
-  #message_unit_font_size: 20
+  #message_unit_font_size: 18
   #mqtt_message_lisener: "oled/message"
   display_interface_serial: i2c
   display_interface_port: 1
