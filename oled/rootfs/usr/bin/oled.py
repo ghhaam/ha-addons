@@ -10,19 +10,19 @@ from PIL import ImageFont
 
 # Add command line arguments for setting config
 parser = argparse.ArgumentParser()
-parser.add_argument("--mqtt_host")
-parser.add_argument("--mqtt_user")
-parser.add_argument("--mqtt_password")
+parser.add_argument('-h', '--mqtt_host')
+parser.add_argument('-u', '--mqtt_user')
+parser.add_argument('-p', '--mqtt_password')
 parser.add_argument('-l', '--mqtt_message_lisener')
-parser.add_argument("--message")
+parser.add_argument('-m', '--message')
 parser.add_argument('-n', '--message_unit')
 parser.add_argument('-f', '--message_font_size', type=int)
 parser.add_argument('-s', '--message_unit_font_size', type=int)
-parser.add_argument("--display_type")
-parser.add_argument("--display_rotate", type=int)
-parser.add_argument("--display_interface_serial")
-parser.add_argument("--display_interface_port", type=int)
-parser.add_argument("--display_interface_address", type=int)
+parser.add_argument('-d', '--display_type')
+parser.add_argument('-r', '--display_rotate', type=int)
+parser.add_argument('-i', '--display_interface_serial')
+parser.add_argument('-t', '--display_interface_port', type=int)
+parser.add_argument('-a', '--display_interface_address', type=int)
 args = parser.parse_args()
 
 # Set config options
