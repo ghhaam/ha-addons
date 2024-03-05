@@ -1,7 +1,9 @@
+import random
 import argparse
 from typing import Final
 import time
-import paho.mqtt.client as mqtt
+from paho.mqtt import client as mqtt_client
+#import paho.mqtt.client as mqtt
 from luma.core.interface.serial import i2c, spi, pcf8574
 from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas
@@ -36,14 +38,29 @@ DISPLAY_ROTATE: Final = args.display_rotate
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
 DISPLAY_INTERFACE_SERIAL_PORT: Final = args.display_interface_port
 DISPLAY_INTERFACE_SERIAL_ADDRESS: Final = args.display_interface_address #0x3C
+# Generate a Client ID with the subscribe prefix.
+client_id = f'subscribe-{random.randint(0, 100)}'
 
 # The callback for when the client receives a CONNACK response from the server.
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
+#def on_connect(client, userdata, flags, rc):
+    #print("Connected with result code "+str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe(MQTT_MESSAGE_LISENER)
+    #client.subscribe(MQTT_MESSAGE_LISENER)
+
+def connect_mqtt() -> mqtt_client:
+    def on_connect(client, userdata, flags, rc):
+        if rc == 0:
+            print("Connected to MQTT Broker!")
+        else:
+            print("Failed to connect, return code %d\n", rc)
+
+    client = mqtt_client.Client(client_id)
+    client.username_pw_set(username=MQTT_USER, password=MQTT_PASSWORD)
+    client.on_connect = on_connect
+    client.connect(MQTT_HOST, 1883, 60)
+    return client
 
 
 # The callback for when a PUBLISH message is received from the server.
@@ -59,13 +76,30 @@ def on_message(client, userdata, msg):
         else:
             device.hide()
 
+def subscribe(client: mqtt_client):
+    def on_message(client, userdata, msg):
+        print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
+        #print(msg.topic+" "+str(msg.payload, encoding="UTF-8"))
+        with canvas(device) as draw:
+            #draw.rectangle(device.bounding_box, outline="white", fill="black")
+            device.clear()
+            if str(msg.payload, encoding="UTF-8") != "oled_off":
+                device.show()
+                draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
+                draw.text((1, 41), MESSAGE_UNIT, font=fnt_unit, fill="white")
+            else:
+                device.hide()
 
+    client.subscribe(MQTT_MESSAGE_LISENER)
+    client.on_message = on_message
 
-client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
-client.on_connect = on_connect
-client.on_message = on_message
-client.username_pw_set(username=MQTT_USER, password=MQTT_PASSWORD)
-client.connect(MQTT_HOST, 1883, 60)
+#client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
+client = connect_mqtt()
+subscribe(client)
+#client.on_connect = on_connect
+#client.on_message = on_message
+#client.username_pw_set(username=MQTT_USER, password=MQTT_PASSWORD)
+#client.connect(MQTT_HOST, 1883, 60)
 
 
 
