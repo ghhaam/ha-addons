@@ -62,7 +62,7 @@ def on_message(client, userdata, msg):
             device.hide()
 
 
-client = mqtt.Client(mqtt_client.CallbackAPIVersion.VERSION1)
+client = mqtt_client.Client(mqtt.CallbackAPIVersion.VERSION1)
 client.on_connect = on_connect
 client.on_message = on_message
 client.username_pw_set(username=MQTT_USER, password=MQTT_PASSWORD)
