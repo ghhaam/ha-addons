@@ -53,9 +53,10 @@ def on_message(client, userdata, msg):
     with canvas(device) as draw:
         #draw.rectangle(device.bounding_box, outline="white", fill="black")
         device.clear()
-        draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
-        #draw.text((1, 43), MESSAGE_UNIT, font=fnt_unit, fill="white")
-        draw.text((1, 41), "ppm", font=fnt_unit, fill="white")
+        if str(msg.payload, encoding="UTF-8") != "oled_off":
+            draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
+            #draw.text((1, 43), MESSAGE_UNIT, font=fnt_unit, fill="white")
+            draw.text((1, 41), "ppm", font=fnt_unit, fill="white")
 
 
 
