@@ -41,8 +41,8 @@ DISPLAY_INTERFACE_SERIAL_ADDRESS: Final = args.display_interface_address #0x3C
 #client_id = f'subscribe-{random.randint(0, 100)}'
 
 # The callback for when the client receives a CONNACK response from the server.
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
+def on_connect(client, userdata, flags, reason_code, properties):
+    print("Connected with result code "+str(reason_code))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -62,7 +62,7 @@ def on_message(client, userdata, msg):
             device.hide()
 
 
-client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.on_connect = on_connect
 client.on_message = on_message
 client.username_pw_set(username=MQTT_USER, password=MQTT_PASSWORD)
