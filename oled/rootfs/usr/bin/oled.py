@@ -31,6 +31,7 @@ MQTT_USER: Final = args.mqtt_user
 MQTT_PASSWORD: Final = args.mqtt_password
 #MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
 #MESSAGE_UNIT: Final = args.message_unit
+MESSAGE_UNIT: Final = "ppm"
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
@@ -56,8 +57,8 @@ def on_message(client, userdata, msg):
         if str(msg.payload, encoding="UTF-8") != "oled_off":
             device.show()
             draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
-            #draw.text((1, 41), MESSAGE_UNIT, font=fnt_unit, fill="white")
-            draw.text((1, 41), "ppm", font=fnt_unit, fill="white")
+            draw.text((1, 41), MESSAGE_UNIT, font=fnt_unit, fill="white")
+            #draw.text((1, 41), "ppm", font=fnt_unit, fill="white")
         else:
             device.hide()
 
