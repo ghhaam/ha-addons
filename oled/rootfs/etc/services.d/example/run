@@ -15,6 +15,7 @@ else
 fi
 ## Get the user config options.
 message=$(bashio::config 'message')
+message_unit=$(bashio::config 'message_unit')
 display_type=$(bashio::config 'display_type')
 display_rotate=$(bashio::config 'display_rotate')
 display_interface_serial=$(bashio::config 'display_interface_serial')
