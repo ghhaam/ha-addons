@@ -16,8 +16,8 @@ parser.add_argument("--mqtt_password")
 parser.add_argument('-l', '--mqtt_message_lisener')
 parser.add_argument("--message")
 parser.add_argument('-n', '--message_unit')
-#parser.add_argument("--message_font_size", type=int)
-#parser.add_argument("--message_unit_font_size", type=int)
+parser.add_argument('-f', '--message_font_size', type=int)
+parser.add_argument('-s', '--message_unit_font_size', type=int)
 parser.add_argument("--display_type")
 parser.add_argument("--display_rotate", type=int)
 parser.add_argument("--display_interface_serial")
@@ -44,7 +44,6 @@ def on_connect(client, userdata, flags, rc):
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     client.subscribe(MQTT_MESSAGE_LISENER)
-    #client.subscribe("oled/message")
 
 
 # The callback for when a PUBLISH message is received from the server.
@@ -76,10 +75,10 @@ interface = globals()[DISPLAY_INTERFACE_SERIAL](port=DISPLAY_INTERFACE_SERIAL_PO
 device = globals()[DISPLAY_TYPE](interface, rotate=DISPLAY_ROTATE)
 device.contrast(50)
 
-#fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_font_size, encoding="unic")
-fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 40, encoding="unic")
-#fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_unit_font_size, encoding="unic")
-fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 18, encoding="unic")
+fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_font_size, encoding="unic")
+#fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 40, encoding="unic")
+fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_unit_font_size, encoding="unic")
+#fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", 18, encoding="unic")
 
 # Draw some text
 with canvas(device) as draw:
