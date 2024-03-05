@@ -30,7 +30,7 @@ MQTT_HOST: Final = args.mqtt_host
 MQTT_USER: Final = args.mqtt_user
 MQTT_PASSWORD: Final = args.mqtt_password
 #MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
-MESSAGE_UNIT: Final = str(args.message_unit, encoding="UTF-8")
+MESSAGE_UNIT: Final = args.message_unit
 #MESSAGE_UNIT: Final = "ppm"
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
