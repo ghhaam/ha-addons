@@ -84,3 +84,4 @@ with canvas(device) as draw:
     draw.text((1, 1), args.message, font=fnt, fill="white")
 
 client.loop_forever()
+device.cleanup()
