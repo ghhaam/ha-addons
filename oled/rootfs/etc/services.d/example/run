@@ -12,13 +12,13 @@ else
     mqtt_host=$(bashio::services mqtt "host")
     mqtt_user=$(bashio::services mqtt "username")
     mqtt_password=$(bashio::services mqtt "password")
+    mqtt_message_lisener=$(bashio::config 'mqtt_message_lisener')
 fi
 ## Get the user config options.
 message=$(bashio::config 'message')
 message_unit=$(bashio::config 'message_unit')
 message_font_size=$(bashio::config 'message_font_size')
 message_unit_font_size=$(bashio::config 'message_unit_font_size')
-mqtt_message_lisener=$(bashio::config 'mqtt_message_lisener')
 display_type=$(bashio::config 'display_type')
 display_rotate=$(bashio::config 'display_rotate')
 display_interface_serial=$(bashio::config 'display_interface_serial')
