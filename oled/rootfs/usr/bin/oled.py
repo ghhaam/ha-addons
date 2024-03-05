@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--mqtt_host")
 parser.add_argument("--mqtt_user")
 parser.add_argument("--mqtt_password")
-#parser.add_argument("--mqtt_message_lisener")
+parser.add_argument('-l', '--mqtt_message_lisener')
 parser.add_argument("--message")
 parser.add_argument('-n', '--message_unit')
 #parser.add_argument("--message_font_size", type=int)
@@ -29,9 +29,8 @@ args = parser.parse_args()
 MQTT_HOST: Final = args.mqtt_host
 MQTT_USER: Final = args.mqtt_user
 MQTT_PASSWORD: Final = args.mqtt_password
-#MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
+MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
 MESSAGE_UNIT: Final = args.message_unit
-#MESSAGE_UNIT: Final = "ppm"
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
@@ -44,8 +43,8 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    #client.subscribe(MQTT_MESSAGE_LISENER)
-    client.subscribe("oled/message")
+    client.subscribe(MQTT_MESSAGE_LISENER)
+    #client.subscribe("oled/message")
 
 
 # The callback for when a PUBLISH message is received from the server.
@@ -58,7 +57,6 @@ def on_message(client, userdata, msg):
             device.show()
             draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
             draw.text((1, 41), MESSAGE_UNIT, font=fnt_unit, fill="white")
-            #draw.text((1, 41), "ppm", font=fnt_unit, fill="white")
         else:
             device.hide()
 
