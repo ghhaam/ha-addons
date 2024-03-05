@@ -31,7 +31,7 @@ profile oled flags=(attach_disconnected,mediate_deleted) {
   #/usr/bin/my_program cx -> my_program,
   /usr/bin/oled.py cx -> oled.py,
 
-  profile my_program flags=(attach_disconnected,mediate_deleted) {
+  profile oled.py flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
 
     # Receive signals from S6-Overlay
