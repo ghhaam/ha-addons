@@ -10,7 +10,7 @@ from PIL import ImageFont
 
 # Add command line arguments for setting config
 parser = argparse.ArgumentParser()
-parser.add_argument('-h', '--mqtt_host')
+parser.add_argument('-q', '--mqtt_host')
 parser.add_argument('-u', '--mqtt_user')
 parser.add_argument('-p', '--mqtt_password')
 parser.add_argument('-l', '--mqtt_message_lisener')
