@@ -1,4 +1,4 @@
-# Wildekek's Home Assistant add-on repository
+# ghhaam's Home Assistant add-on repository
 
 A collection of the HA add-ons I created
 
