@@ -3,7 +3,6 @@ import argparse
 from typing import Final
 import time
 from paho.mqtt import client as mqtt_client
-#import paho.mqtt.client as mqtt
 from luma.core.interface.serial import i2c, spi, pcf8574
 from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas
