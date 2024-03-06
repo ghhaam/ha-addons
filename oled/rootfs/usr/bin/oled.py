@@ -25,6 +25,7 @@ parser.add_argument('-f', '--message_font_size', type=int)
 parser.add_argument('-s', '--message_unit_font_size', type=int)
 parser.add_argument('-d', '--display_type')
 parser.add_argument('-r', '--display_rotate', type=int)
+parser.add_argument('-c', '--display_contrast', type=int)
 parser.add_argument('-i', '--display_interface_serial')
 parser.add_argument('-t', '--display_interface_port', type=int)
 parser.add_argument('-a', '--display_interface_address', type=int)
@@ -42,6 +43,7 @@ MESSAGE_UNIT_COORDINATE_X: Final = args.message_unit_coordinate_x
 MESSAGE_UNIT_COORDINATE_Y: Final = args.message_unit_coordinate_y
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
+DISPLAY_CONTRAST: Final = args.display_contrast
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
 DISPLAY_INTERFACE_SERIAL_PORT: Final = args.display_interface_port
 DISPLAY_INTERFACE_SERIAL_ADDRESS: Final = args.display_interface_address #0x3C
@@ -82,7 +84,7 @@ client.connect(MQTT_HOST, 1883, 60)
 interface = globals()[DISPLAY_INTERFACE_SERIAL](port=DISPLAY_INTERFACE_SERIAL_PORT, address=DISPLAY_INTERFACE_SERIAL_ADDRESS)
 # Create the display device
 device = globals()[DISPLAY_TYPE](interface, rotate=DISPLAY_ROTATE)
-device.contrast(50)
+device.contrast(DISPLAY_CONTRAST)
 
 fnt = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_font_size, encoding="unic")
 fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_unit_font_size, encoding="unic")
