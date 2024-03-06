@@ -16,7 +16,11 @@ parser.add_argument('-u', '--mqtt_user')
 parser.add_argument('-p', '--mqtt_password')
 parser.add_argument('-l', '--mqtt_message_lisener')
 parser.add_argument('-m', '--message')
+parser.add_argument('-x', '--message_coordinate_x', type=int)
+parser.add_argument('-y', '--message_coordinate_y', type=int)
 parser.add_argument('-n', '--message_unit')
+parser.add_argument('-v', '--message_unit_coordinate_x', type=int)
+parser.add_argument('-w', '--message_unit_coordinate_y', type=int)
 parser.add_argument('-f', '--message_font_size', type=int)
 parser.add_argument('-s', '--message_unit_font_size', type=int)
 parser.add_argument('-d', '--display_type')
@@ -32,6 +36,10 @@ MQTT_USER: Final = args.mqtt_user
 MQTT_PASSWORD: Final = args.mqtt_password
 MQTT_MESSAGE_LISENER: Final = args.mqtt_message_lisener
 MESSAGE_UNIT: Final = args.message_unit
+MESSAGE_COORDINATE_X: Final = args.message_coordinate_x
+MESSAGE_COORDINATE_Y: Final = args.message_coordinate_y
+MESSAGE_UNIT_COORDINATE_X: Final = args.message_unit_coordinate_x
+MESSAGE_UNIT_COORDINATE_Y: Final = args.message_unit_coordinate_y
 DISPLAY_TYPE: Final = args.display_type
 DISPLAY_ROTATE: Final = args.display_rotate
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
@@ -56,8 +64,8 @@ def on_message(client, userdata, msg):
         device.clear()
         if str(msg.payload, encoding="UTF-8") != "oled_off":
             device.show()
-            draw.text((1, 1), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
-            draw.text((1, 41), MESSAGE_UNIT, font=fnt_unit, fill="white")
+            draw.text((MESSAGE_COORDINATE_X, MESSAGE_COORDINATE_Y), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
+            draw.text((MESSAGE_UNIT_COORDINATE_X, MESSAGE_UNIT_COORDINATE_Y), MESSAGE_UNIT, font=fnt_unit, fill="white")
         else:
             device.hide()
 
@@ -82,6 +90,6 @@ fnt_unit = ImageFont.truetype("/usr/bin/SF-Compact.ttf", size=args.message_unit_
 # Draw some text
 with canvas(device) as draw:
     # draw.rectangle(device.bounding_box, outline="white", fill="black")
-    draw.text((1, 1), args.message, font=fnt, fill="white")
+    draw.text((MESSAGE_COORDINATE_X, MESSAGE_COORDINATE_Y), args.message, font=fnt, fill="white")
 
 client.loop_forever()
