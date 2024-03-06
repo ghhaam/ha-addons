@@ -5,12 +5,24 @@ configuration:
   message_font_size:
     name: Message font size
     description: Size of the value.
+  message_coordinate_x:
+    name: Message x-coordinate
+    description: X-coordinate of the message.
+  message_coordinate_y:
+    name: Message y-coordinate
+    description: Y-coordinate of the message.
   message_unit:
     name: Message unit
     description: Fix unit of the message.
   message_unit_font_size:
     name: Unit font size
     description: Size of the unit.
+  message_unit_coordinate_x:
+    name: Unit x-coordinate
+    description: X-coordinate of the unit.
+  message_unit_coordinate_y:
+    name: Unit y-coordinate
+    description: Y-coordinate of the unit.
   mqtt_message_lisener:
     name: MQTT message lisener
     description: Lisener for MQTT message to display.
