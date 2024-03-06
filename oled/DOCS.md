@@ -12,5 +12,4 @@ Set your display settings in the configuration and start the add-on. If you see 
 Currently this add-on only supports the sh1106 screen, but it should be very easy to add the other supported displays:https://luma-oled.readthedocs.io/en/latest/
 
 ### Usage
-You can try to send a MQTT message to the topic oled/message and it should show on your screen!
-The message "oled_off" to the topic oled/message turn the screen off.
+You can try to send a MQTT message to the topic oled/message and it should show on your screen! The message "oled_off" to the topic oled/message turn the screen off.
