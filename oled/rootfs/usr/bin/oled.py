@@ -47,8 +47,8 @@ DISPLAY_CONTRAST: Final = args.display_contrast
 DISPLAY_INTERFACE_SERIAL: Final = args.display_interface_serial
 DISPLAY_INTERFACE_SERIAL_PORT: Final = args.display_interface_port
 DISPLAY_INTERFACE_SERIAL_ADDRESS: Final = args.display_interface_address #0x3C
-# Generate a Client ID with the subscribe prefix.
-#client_id = f'subscribe-{random.randint(0, 100)}'
+# Generate a Client ID with the oled prefix.
+#client_id = f'oled-{random.randint(0, 100)}'
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, reason_code, properties):
