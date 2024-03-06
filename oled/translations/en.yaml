@@ -40,4 +40,4 @@ configuration:
     description: "Rotate the display. 0 is no rotation, 1 is rotate 90° clockwise, 2 is 180° rotation and 3 represents 270° rotation."
   display_contrast:
     name: Display contrast
-    description: "The contrast of the OLED display. See https://luma-oled.readthedocs.io/en/latest/api-documentation.html#luma.oled.device.ssd1306"
+    description: "The contrast of the OLED display. Desired contrast level in the range of 1-255"
