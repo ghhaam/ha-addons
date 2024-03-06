@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: OLED add-on
-version: "0.0.33"
+version: "0.0.34"
 slug: oled
 description: Use OLED screens via i2c
 url: "https://github.com/ghhaam/ha-addons/tree/main/oled"
@@ -38,6 +38,7 @@ options:
   display_interface_address: 60
   display_type: ssd1306
   display_rotate: "2"
+  display_contrast: 50
 schema: 
   message: str
   message_font_size: int
@@ -53,4 +54,5 @@ schema:
   display_interface_address: int
   display_type: list(sh1106|ssd1306)
   display_rotate: list(0|1|2|3)
+  display_contrast: int
 #image: "ghcr.io/home-assistant/{arch}-addon-example"
