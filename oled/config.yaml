@@ -14,7 +14,7 @@ arch:
 services: 
   - mqtt:need
 init: false
-apparmor: true
+apparmor: false
 full_access: false
 uart: true
 udev: true
