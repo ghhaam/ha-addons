@@ -64,7 +64,7 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload, encoding="UTF-8"))
     with canvas(device) as draw:
         #draw.rectangle(device.bounding_box, outline="white", fill="black")
-        device.clear()
+        #device.clear()
         if str(msg.payload, encoding="UTF-8") != "oled_off":
             device.show()
             draw.text((MESSAGE_COORDINATE_X, MESSAGE_COORDINATE_Y), str(msg.payload, encoding="UTF-8"), font=fnt, fill="white")
