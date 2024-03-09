@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: OLED add-on
-version: "0.0.40"
+version: "0.0.41"
 slug: oled
 description: Use OLED screens via i2c
 url: "https://github.com/ghhaam/ha-addons/tree/main/oled"
@@ -15,7 +15,9 @@ services:
   - mqtt:need
 init: false
 apparmor: false
-full_access: true
+full_access: false
+uart: true
+udev: true
 devices:
   - /dev/i2c-0
   - /dev/i2c-1
